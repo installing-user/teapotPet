@@ -1,0 +1,21 @@
+version: "3.9"
+
+volumes:
+  app:
+  postgres:
+
+services:
+  app:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine3.18
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:5432:5432"
