@@ -3,6 +3,7 @@ version: "3.9"
 volumes:
   app:
   postgres:
+  frontend:
 
 services:
   app:
@@ -19,3 +20,9 @@ services:
       - .env
     ports:
       - "127.0.0.1:5432:5432"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+        - "3000:3000"
